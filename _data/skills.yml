@@ -1,0 +1,39 @@
+- name: Languages
+  tech:
+    - Java
+    - Python
+    - HTML
+    - CSS
+    - JavaScript
+    - React
+    - C/C++
+
+- name: Databases
+  tech:
+    - SQL
+    - Firebase
+ 
+- name: Other
+  tech:
+    - Git
+    - Linux
+    - Agile Development
+    - Object-Oriented Design
+    - Data Structures
+    - Algorithms
+    - Model-View-Controller
+    - Adobe XD
+    - Adobe Photoshop
+
+- name: Libraries
+  tech:
+    - JUnit
+    - Pandas
+    - JavaFX
+    - Numpy
+    - Selenium
+    - SciPy
+    - Matplotlib
+    - Jekyll
+    - Liquid
+    - Tailwind CSS
