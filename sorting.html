@@ -3,29 +3,183 @@ layout: default
 title: Sorting 
 ---
 
-<section class="mt-16">
-    <div class="flex items-center dark:text-gray-200 border-b-4 border-yellow-400 mb-12 pb-3">
-        <svg class="w-10 h-10 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-        <h1 class="font-roboto font-medium text-3xl sm:text-4xl">Resume</h1>
-    </div>
-</section>
+<!-- <section class="mt-16">
+    
+</section> -->
 
-<section class=" mb-16  h-screen">
-    <div class="flex justify-center text-gray-700 dark:text-gray-300 h-screen">
-        <iframe src="https://standardresume.co/r/RApSegJTdUdjm6tnRJWEV" frameBorder="0" scrolling="auto" height="100%" width="100%" >
-        </iframe>
-        <!-- <div id="adobe-dc-view" style="width: 800px;"></div>
-            <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-            <script type="text/javascript">
-	            document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
-		            var adobeDCView = new AdobeDC.View({clientId: "5e71dab0196f42968fbfec37aa39b784", divId: "adobe-dc-view"});
-		            adobeDCView.previewFile({
-			            content:{location: {url: "assets/pdf/Luke_Grippa_Resume.pdf"}},
-			            metaData:{fileName: "Luke_Grippa_Resume.pdf"}
-		            }, {embedMode: "IN_LINE"});
-	            });
-            </script> -->
+<body class="w-screen h-screen bg-gradient-to-br from-green-400  to-blue-500">
+    <div class="grid grid-cols-5 grid-rows-1 pl-6 items-center w-screen h-screen bg-coolGray-100 bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-75 ">
+
+        <section class="sidebar col-span-1  h-5/6 w-full flex flex-col py-12  justify-start rounded-3xl text-base text-coolGray-900 bg-coolGray-50 shadow-sm">
+            <button id="generate" class="mx-10 mt-8 mb-8 py-3 px-8 rounded-3xl bg-emerald-500 bg-opacity-80 hover:border-blue-300">Generate Array</button>
+            <button id="sort" class=" mx-10 mb-16 py-3 px-16 rounded-3xl bg-blue-500 bg-opacity-80">Sort!</button>
+            <div class="algorithms flex flex-col w-full">
+                <h2 class="text-xl font-semibold pl-8 pb-3">Sorting Algorithms</h2>
+                <button id="bubble" class="algorithms mx-8 mt-6 py-2 pl-5 text-left rounded-2xl bg-coolGray-200 hover:bg-coolGray-200 hover:bg-opacity-80">Bubble Sort</button>
+                <button id="merge" class="algorithms mx-8 mt-6 py-2 pl-5 text-left rounded-2xl hover:bg-coolGray-200 hover:bg-opacity-80">Merge Sort</button>
+                <button id="quick" class="algorithms mx-8 mt-6 py-2 pl-5 text-left rounded-2xl hover:bg-coolGray-200 hover:bg-opacity-80">Quick Sort</button>
+                <button id="heap" class="algorithms mx-8 mt-6 py-2 pl-5 text-left rounded-2xl  hover:bg-coolGray-200 hover:bg-opacity-80">Heap Sort</button>
+            </div>
+        </section>
+
+        <main class="col-span-4 flex flex-col h-5/6 w-4/5 mx-16">
+
+            <section class="sliders flex flex-row justify-center items-center my-8 w-full text-base font-normal">
+                <div class="slidecontainer flex flex-row justify-center items-center">
+                    <p class="px-4">Size:</p>
+                    <input type="range" min="5" max="1000" value="50" class="slider appearance-none h-0.5 w-60 bg-coolGray-700 rounded-lg" id="sizeSlider">
+                    <p class="px-4" id="sizeSliderValue"></p>
+                </div>
+                <div class="slidecontainer flex flex-row justify-center items-center">
+                    <p class="px-4">Delay:</p>
+                    <input type="range" min="1" max="100" value="50" class="slider appearance-none h-0.5 w-60 bg-coolGray-700 rounded-full" id="speedSlider">
+                    <p class="px-4" id="speedSliderValue"></p>
+                </div>
+            </section>
+
+            <section class="flex flex-col items-center w-full px-8 pt-8 pb-8 rounded-3xl text-coolGray-900 bg-coolGray-50 shadow-sm">
+                <section class="flex flex-row w-full">
+                    <section class="visualization flex flex-row items-end justify-center h-96 w-4/5 mb-8 px-8 text-base border-b-2 border-coolGray-200">
+
+                    </section>
+
+                    <section class="flex flex-col mx-8 mb-8 px-3 justify-around text-center text-coolGray-800 text-base font-medium rounded-3xl bg-yellow-400 bg-opacity-60 shadow-sm">
+                        <div class="">
+                            <p class="py-1 ">Comparisons:</p>
+                            <p id="comparisons" class="pt-1 pb-6 border-b-2 border-coolGray-50">0</p>
+                        </div>
+                        <div class="">
+                            <p class="py-1 ">Array Accesses:</p>
+                            <p id="array-accesses" class="pt-1 pb-6 border-b-2 border-coolGray-50">0</p>
+                        </div>
+                        <div class="">
+                            <p class="py-1 ">Delay:</p>
+                            <p id="delay" class="pt-1 pb-2"> 50 ms</p>
+                        </div>
+                    </section>
+                </section>
+
+                <section class="flex flex-row py-4 justify-around items-center w-full rounded-3xl border-2 text-center text-base font-medium text-coolGray-900">
+                    <div>
+                        <p class="pb-2">Algorithm:</p>
+                        <p id="algorithm">Bubble Sort</p>
+                    </div>
+                    <div>
+                        <p class="pb-2">Best Case:</p>
+                        <p id="best-case">O(N^2)</p>
+                    </div>
+                    <div>
+                        <p class="pb-2">Average Case:</p>
+                        <p id="average-case">O(N^2)</p>
+                    </div>
+                    <div>
+                        <p class="pb-2">Worst Case:</p>
+                        <p id="worst-case">O(N^2)</p>
+                    </div>
+                </section>
+            </section>
+
+        </main>
+
     </div>
-</section>
+
+</body>
+
+<script src="./assets/js/slider.js"></script>
+<script src="./assets/js/generate-histogram.js"></script>
+<script src="./assets/js/generate-array.js"></script>
+<script src="./assets/js/mergesort.js"></script>
+<script src="./assets/js/quicksort.js"></script>
+<script>
+    let arr = [];
+    let sort = 0;
+    let comparisons = 0;
+    let arrayAccesses = 0;
+
+    arr = generateArray(arr, parseInt(document.getElementById("sizeSlider").value));
+
+    const delaySlider = document.getElementById("speedSlider");
+
+    delaySlider.addEventListener('change', (event) => {
+        const delay = document.getElementById("delay");
+        delay.innerHTML = delaySlider.value;
+    });
+
+    document.getElementById("generate").onclick = function() {
+        arr = generateArray(arr, parseInt(document.getElementById("sizeSlider").value));
+    }
+
+
+    document.getElementById("bubble").onclick = function() {
+        sort = 0;
+        Array.from(document.querySelectorAll('.algorithms')).forEach((el) => el.classList.remove('bg-coolGray-200'));
+        document.getElementById("bubble").classList.add("bg-coolGray-200");
+        document.getElementById("algorithm").innerHTML = "Bubble Sort";
+        document.getElementById("best-case").innerHTML = "O(N)";
+        document.getElementById("average-case").innerHTML = "O(N^2)";
+        document.getElementById("worst-case").innerHTML = "O(N^2)";
+    }
+
+    document.getElementById("merge").onclick = function() {
+        sort = 1;
+        Array.from(document.querySelectorAll('.algorithms')).forEach((el) => el.classList.remove('bg-coolGray-200'));
+        document.getElementById("merge").classList.add("bg-coolGray-200");
+        document.getElementById("algorithm").innerHTML = "Merge Sort";
+        document.getElementById("best-case").innerHTML = "O(N log(N))";
+        document.getElementById("average-case").innerHTML = "O(N log(N))";
+        document.getElementById("worst-case").innerHTML = "O(N log(N))";
+    }
+
+    document.getElementById("quick").onclick = function() {
+        sort = 2;
+        Array.from(document.querySelectorAll('.algorithms')).forEach((el) => el.classList.remove('bg-coolGray-200'));
+        document.getElementById("quick").classList.add("bg-coolGray-200");
+        document.getElementById("algorithm").innerHTML = "Quick Sort";
+        document.getElementById("best-case").innerHTML = "O(N log(N))";
+        document.getElementById("average-case").innerHTML = "O(N log(N))";
+        document.getElementById("worst-case").innerHTML = "O(N^2)";
+    }
+
+    document.getElementById("heap").onclick = function() {
+        sort = 3;
+        Array.from(document.querySelectorAll('.algorithms')).forEach((el) => el.classList.remove('bg-coolGray-200'));
+        document.getElementById("heap").classList.add("bg-coolGray-200");
+        document.getElementById("algorithm").innerHTML = "Heap Sort";
+        document.getElementById("best-case").innerHTML = "O(N log(N))";
+        document.getElementById("average-case").innerHTML = "O(N log(N))";
+        document.getElementById("worst-case").innerHTML = "O(N^2)";
+    }
+
+    document.getElementById("sort").onclick = async function() {
+        comparisons = 0;
+        arrayAccesses = 0;
+
+        document.getElementById("sort").disabled = true;
+        document.getElementById("generate").disabled = true;
+        document.getElementById("bubble").disabled = true;
+        document.getElementById("merge").disabled = true;
+        document.getElementById("quick").disabled = true;
+        document.getElementById("heap").disabled = true;
+
+        if (sort == 0) {
+
+        } else if (sort === 1) {
+            console.log("Merge Sort running!");
+            await mergeSort(arr);
+        } else if (sort == 2) {
+            console.log("Quick Sort running!");
+            await quickSort(arr);
+        } else if (sort == 3) {
+
+        }
+
+        document.getElementById("sort").disabled = false;
+        document.getElementById("generate").disabled = false;
+        document.getElementById("bubble").disabled = false;
+        document.getElementById("merge").disabled = false;
+        document.getElementById("quick").disabled = false;
+        document.getElementById("heap").disabled = false;
+    }
+</script>
+
+</html>
