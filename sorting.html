@@ -1,5 +1,5 @@
 --- 
-layout: default 
+layout: sort 
 title: Sorting 
 ---
 
@@ -15,10 +15,10 @@ title: Sorting
             <button id="sort" class=" mx-10 mb-16 py-3 px-16 rounded-3xl bg-blue-500 bg-opacity-80">Sort!</button>
             <div class="algorithms flex flex-col w-full">
                 <h2 class="text-xl font-semibold pl-8 pb-3">Sorting Algorithms</h2>
-                <button id="bubble" class="algorithms mx-8 mt-6 py-2 pl-5 text-left rounded-2xl bg-coolGray-200 hover:bg-coolGray-200 hover:bg-opacity-80">Bubble Sort</button>
+                <button id="bubble" class="algorithms mx-8 mt-6 py-2 pl-5 text-left rounded-2xl bg-coolGray-200 hover:bg-coolGray-200 hover:bg-opacity-80"><s>Bubble Sort</s></button>
                 <button id="merge" class="algorithms mx-8 mt-6 py-2 pl-5 text-left rounded-2xl hover:bg-coolGray-200 hover:bg-opacity-80">Merge Sort</button>
                 <button id="quick" class="algorithms mx-8 mt-6 py-2 pl-5 text-left rounded-2xl hover:bg-coolGray-200 hover:bg-opacity-80">Quick Sort</button>
-                <button id="heap" class="algorithms mx-8 mt-6 py-2 pl-5 text-left rounded-2xl  hover:bg-coolGray-200 hover:bg-opacity-80">Heap Sort</button>
+                <button id="heap" class="algorithms mx-8 mt-6 py-2 pl-5 text-left rounded-2xl  hover:bg-coolGray-200 hover:bg-opacity-80"><s>Heap Sort</s></button>
             </div>
         </section>
 
@@ -27,7 +27,7 @@ title: Sorting
             <section class="sliders flex flex-row justify-center items-center my-8 w-full text-base font-normal">
                 <div class="slidecontainer flex flex-row justify-center items-center">
                     <p class="px-4">Size:</p>
-                    <input type="range" min="5" max="1000" value="50" class="slider appearance-none h-0.5 w-60 bg-coolGray-700 rounded-lg" id="sizeSlider">
+                    <input type="range" min="5" max="200" value="35" class="slider appearance-none h-0.5 w-60 bg-coolGray-700 rounded-lg" id="sizeSlider">
                     <p class="px-4" id="sizeSliderValue"></p>
                 </div>
                 <div class="slidecontainer flex flex-row justify-center items-center">
@@ -162,7 +162,7 @@ title: Sorting
         document.getElementById("heap").disabled = true;
 
         if (sort == 0) {
-
+            alert("Bubble Sort is still in development! Please pick another algorithm :)")
         } else if (sort === 1) {
             console.log("Merge Sort running!");
             await mergeSort(arr);
@@ -170,7 +170,7 @@ title: Sorting
             console.log("Quick Sort running!");
             await quickSort(arr);
         } else if (sort == 3) {
-
+            alert("Heap Sort is still in development! Please pick another algorithm :)")
         }
 
         document.getElementById("sort").disabled = false;

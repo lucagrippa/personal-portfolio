@@ -12,7 +12,7 @@ function generateHistogram(arr) {
         //block.style.transform = `translateX(${i * 10}px)`;
         block.style.backgroundColor = '#575757';
 
-        if (arr.length <= 50) {
+        if (arr.length <= 35) {
             const blockLabel = document.createElement("label");
             blockLabel.classList.add("block__id");
             blockLabel.classList.add("text-gray-100");

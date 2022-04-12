@@ -1,7 +1,7 @@
+- name: About
+  link: /about.html
 - name: Projects
   link: /projects.html
-- name: Resume
-  link: /resume.html
 - name: Sorting
   link: /sorting.html
 
